@@ -1,0 +1,347 @@
+:root {
+    --primary-color: #00ff00;
+    --secondary-color: #003300;
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --accent-color: #0066cc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Animation */
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#home {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; /* Prevents overflow from the video */
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Puts the video behind the content */
+    transform: translate(-50%, -50%);
+}
+
+.content {
+    position: relative; /* Keeps the content above the video */
+    z-index: 1; /* Ensures content is above the video */
+    /* Add any additional styling for your content here */
+}
+
+
+.matrix-column {
+    position: absolute;
+    top: -100%;
+    width: 1px;
+    height: 100%;
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 255, 0, 0) 0%,
+        rgba(0, 255, 0, 1) 75%,
+        rgba(0, 255, 0, 0) 100%
+    );
+    animation: fall 10s infinite linear;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    background-color: rgba(0, 51, 0, 0.9);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 1rem;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+main {
+    margin-top: 60px;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,0 100,0 100,100" fill="%23003300" opacity="0.2"/></svg>');
+    background-size: cover;
+    z-index: -1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.features {
+    padding: 3rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feature {
+    flex: 1 1 300px;
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: rgba(0, 51, 0, 0.7);
+    border-radius: 5px;
+}
+
+.feature h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.services {
+    padding: 3rem 0;
+    background-color: rgba(0, 51, 0, 0.7);
+}
+
+.services h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-item {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1.5rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.service-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.events {
+    padding: 3rem 0;
+}
+
+.events h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.event-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.event-image {
+    width: 100%;
+    /* height: 200px; */
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 1px 1px #fff;
+}
+
+.testimonials {
+    padding: 3rem 0;
+    background-color: rgba(0, 51, 0, 0.7);
+}
+
+.testimonials h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+
+.testimonial q {
+    display: block;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.contact {
+    padding: 3rem 0;
+}
+
+.contact h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--secondary-color);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+.form-group textarea {
+    height: 150px;
+}
+
+footer {
+    background-color: rgba(0, 51, 0, 0.9);
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    header {
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 1rem;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
